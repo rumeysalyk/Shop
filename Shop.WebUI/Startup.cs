@@ -1,9 +1,13 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shop.Business.Abstract;
+using Shop.Business.Concrete;
+using Shop.DataAccess.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +27,13 @@ namespace Shop.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //server bağlantısı
+            services.AddDbContext<OnlineShopDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ShoppingCenterDb")));
+
+            //Dependency injection 
+            services.AddTransient<IProductService, EfProductManager>();
+            services.AddTransient<ICategoryService, EfCategoryManager>();
+            services.AddTransient<IUnitOfWork, EfUnitOfWork>();
             services.AddControllersWithViews();
         }
 
@@ -52,6 +63,9 @@ namespace Shop.WebUI
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SeedData.EnsurePopulated(app);
+
         }
     }
 }

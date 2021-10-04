@@ -18,5 +18,11 @@ namespace Shop.WebUI.Controllers
         {
             return View();
         }
+
+        //[HttpPost]
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
     }
 }
