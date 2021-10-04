@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Business.Abstract;
+using Shop.Entities;
 using Shop.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -33,10 +34,17 @@ namespace Shop.WebUI.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        public IActionResult Create(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                unitOfWork.Categories.Add(category);
+                unitOfWork.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(category);
+
+        }
     }
 }
