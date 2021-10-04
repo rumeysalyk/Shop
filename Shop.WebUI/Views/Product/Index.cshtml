@@ -1,0 +1,60 @@
+﻿
+@model CatalogListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            Ürünler
+        </div>
+        <div class="card-body">
+            @if (Model.Products.Count() > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Category Name</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Products)
+                        {
+                        <tr>
+                            <th>@item.ProductId</th>
+                            <!--Resimleri unutma-->
+                            <td>@item.ProductName</td>
+                            <td>@item.Price</td>
+                            <td>@item.Description</td>
+                            <td>@item.Category.CategoryName</td>
+
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-action="Update" asp-controller="Product" asp-route-id="@item.ProductId">Update</a>
+                                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-controller="Product" asp-route-id="@item.ProductId">Delete</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="card-footer">
+                    <a class="btn btn-primary btn-sm" asp-action="Create" asp-controller="Product">Create</a>
+
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger">
+                    Stokta ürün yok
+                </div>
+            }
+        </div>
+    </div>
+</div>
