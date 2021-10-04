@@ -1,0 +1,22 @@
+﻿@model Category
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    <h3 class="mt-5 mb-5">Update Category</h3>
+    <form asp-action="Edit" asp-controller="Category" method="post" asp-route-id="@Model.CategoryId">
+        <!--category id yi tutmak çok önemli update işleminde-->
+        <input type="hidden" asp-for="CategoryId" />
+        <div class="mb-3">
+            <label asp-for="CategoryName" class="form-label">Category Name</label>
+            <input asp-for="CategoryName" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-dark">Edit</button>
+    </form>
+</div>
+
+

@@ -62,29 +62,25 @@ namespace Shop.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            return View(unitOfWork.Categories.Get(id));
+        }
 
+        [HttpPost]
+        public IActionResult Edit(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                unitOfWork.Categories.Edit(category);
+                unitOfWork.SaveChanges();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                TempData["message"] = $"{ category.CategoryName} is updated.";
+                return RedirectToAction("Index");
+            }
+            return View(category);
+        }
 
 
     }

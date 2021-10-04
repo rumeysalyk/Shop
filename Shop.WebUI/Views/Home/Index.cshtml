@@ -4,23 +4,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!--Carousel Part-->
+<div id="slider">
+    <figure>
+        <img src="~/myTheme/images/carousel1.png" alt="">
+        <img src="~/myTheme/images/carousel2.png" alt="">
+        <img src="~/myTheme/images/carousel3.png" alt="">
+    </figure>
+</div>
+
 <div class="container pb-2 mt-5 list-product">
 
     <div class="row row-list">
-        <div class="col-md-3">
+        <div class="col-md-2">
             @await Component.InvokeAsync("LeftSideMenu")
         </div>
-        
-        <div class="col-md-9">
-            <!--Carousel Part-->
-            <div id="slider">
-                <figure>
-                    <img src="./images/carousel1.png" alt="">
-                    <img src="./images/carousel2.png" alt="">
-                    <img src="./images/carousel3.png" alt="">
-                </figure>
-            </div>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <div class="col-md-10">
+            <div class="row row-cols-1 row-cols-md-4 g-4">
                 @Html.Partial("_ProductList", Model)
             </div>
         </div>
