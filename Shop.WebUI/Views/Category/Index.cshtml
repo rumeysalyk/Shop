@@ -28,8 +28,8 @@
                             <td>@item.CategoryName</td>
                             <td>
 
-                                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-controller="Category">Edit</a>
-                                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-controller="Category">Delete</a>
+                                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-controller="Category" asp-route-id="@item.CategoryId">Edit</a>
+                                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-controller="Category" asp-route-id="@item.CategoryId">Delete</a>
 
 
                             </td>

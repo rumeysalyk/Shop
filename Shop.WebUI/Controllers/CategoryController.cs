@@ -44,7 +44,48 @@ namespace Shop.WebUI.Controllers
                 return RedirectToAction("Index");
             }
             return View(category);
-
         }
+
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(unitOfWork.Categories.Get(id));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult Deleted(Category category)
+        {
+            unitOfWork.Categories.Delete(category);
+            unitOfWork.SaveChanges();
+            TempData["message"] = "Deleted";
+            return RedirectToAction("Index");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

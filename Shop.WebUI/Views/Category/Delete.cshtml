@@ -1,0 +1,18 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container mt-5">
+    <h4>
+        Do you want to delete <b>@Model.CategoryName</b>?
+    </h4>
+
+    <form asp-controller="Category" asp-action="Delete" method="post">
+        <input type="hidden" asp-for="CategoryId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>
