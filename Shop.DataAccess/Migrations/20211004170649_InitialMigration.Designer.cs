@@ -9,7 +9,7 @@ using Shop.DataAccess.EntityFramework;
 namespace Shop.DataAccess.Migrations
 {
     [DbContext(typeof(OnlineShopDbContext))]
-    [Migration("20211004083552_InitialMigration")]
+    [Migration("20211004170649_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

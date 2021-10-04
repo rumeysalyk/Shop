@@ -1,0 +1,18 @@
+﻿
+<!--Burada category menu partial olarak tutuluyor.Default dışında farklı stylelara sahip menüler oluşturulabilir-->
+
+@model IEnumerable<Category>
+
+<ul class="list-group">
+
+    @foreach (var item in Model)
+    {
+        /*Eğer itemin category id'si seçilen kategori ile aynı ise o kategori active classına sahip olacak*/
+        <a asp-controller="Home" asp-action="Index" asp-route-id="@item.CategoryId" 
+           class="list-group-item  @(ViewBag.SelectedCategory==item.CategoryId.ToString() ? "active special-color":"")">
+            @item.CategoryName
+        </a>
+    }
+
+
+</ul>

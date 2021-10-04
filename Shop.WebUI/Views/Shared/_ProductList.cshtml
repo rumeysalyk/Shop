@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Product>
+
+
+@if (Model.Count() == 0)
+{
+    <div class="alert alert-warning">
+        There is no product
+    </div>
+}
+else
+{
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100 card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">@item.ProductName</h5>
+                    <h4 class="card-text">$@item.Price</h4>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-dark btn-sm" asp-controller="Product" asp-action="Detail" asp-route-id="@item.ProductId">Details</a>
+                    <a class="btn home-cart-button btn-sm" asp-controller="Product" asp-action="AddToCart" asp-route-id="@item.ProductId">Add To Cart</a>
+
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+
+
+
+

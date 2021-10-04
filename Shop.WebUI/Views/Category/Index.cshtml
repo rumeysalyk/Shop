@@ -1,10 +1,52 @@
-﻿
+﻿@model CatalogListModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="container">
-    <h1>Index</h1>
+
+    <div class="card">
+        <div class="card-header">
+            Categories
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Category Name</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Categories)
+                    {
+                        <tr>
+                            <th>@item.CategoryId</th>
+                            <td>@item.CategoryName</td>
+                            <td>
+
+                                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-controller="Category">Edit</a>
+                                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-controller="Category">Delete</a>
+
+
+                            </td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+            <div class="card-footer">
+
+                <a class="btn btn-primary btn-sm" asp-action="Create" asp-controller="Category">Create</a>
+
+
+            </div>
+        </div>
+    </div>
+
 </div>
 

@@ -37,15 +37,12 @@ namespace Shop.DataAccess.EntityFramework
                     new Product(){ProductName="Mutlu Prens",Price=25,CategoryId=1,Description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus quidem adipisci, in quam incidunt asperiores? Ea sed quidem voluptatibus non quas suscipit quod dolores. Quam qui impedit possimus commodi non!"},
                     new Product(){ProductName="Mesnevi",Price=85,CategoryId=1,Description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus quidem adipisci, in quam incidunt asperiores? Ea sed quidem voluptatibus non quas suscipit quod dolores. Quam qui impedit possimus commodi non!"},
                     new Product(){ProductName="Kamera",Price=1500,CategoryId=3,Description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus quidem adipisci, in quam incidunt asperiores? Ea sed quidem voluptatibus non quas suscipit quod dolores. Quam qui impedit possimus commodi non!"},
-                    new Product(){ProductName="Parende Dergisi",Price=15, CategoryId=2,Description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus quidem adipisci, in quam incidunt asperiores? Ea sed quidem voluptatibus non quas suscipit quod dolores. Quam qui impedit possimus commodi non!"},
+                    new Product(){ProductName="Parende Dergisi",Price=15, CategoryId=2,Description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus quidem adipisci, in quam incidunt asperiores? Ea sed quidem voluptatibus non quas suscipit quod dolores. Quam qui impedit possimus commodi non!"}
                 };
                 context.Products.AddRange(products);
 
                 context.SaveChanges();
             }
-
-
-
 
         }
     }

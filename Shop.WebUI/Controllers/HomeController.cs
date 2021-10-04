@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shop.Business.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,16 +10,26 @@ namespace Shop.WebUI.Controllers
 {
     public class HomeController : Controller
     {
+        private IProductService productService;
 
-        public IActionResult Index()
+        public HomeController(IProductService _productService)
         {
-            return View();
+            productService = _productService;
+        }
+        public IActionResult Index(int? id)
+        {
+            if (id == null)
+            {
+                return View(productService.GetAll());
+
+            }
+            else
+            {
+                var condition = productService.GetAll().Where(i => i.CategoryId == id);
+                return View(condition);
+            }
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
 
     }
