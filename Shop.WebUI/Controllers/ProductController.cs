@@ -101,6 +101,10 @@ namespace Shop.WebUI.Controllers
             ViewBag.Categories = new SelectList(unitOfWork.Categories.GetAll(), "CategoryId", "CategoryName");
             return View(product);
         }
-
+        public IActionResult Detail(int id)
+        {
+            //ViewBag.Category = categoryService.GetById(id).CategoryName;
+            return View(unitOfWork.Products.Get(id));
+        }
     }
 }
