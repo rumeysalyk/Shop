@@ -29,6 +29,7 @@ namespace Shop.WebUI
         {
             //server bağlantısı
             services.AddDbContext<OnlineShopDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ShoppingCenterDb")));
+            services.AddAutoMapper(typeof(Startup)); /* Use AutoMapper */
 
             //Dependency injection 
             services.AddTransient<IProductService, EfProductManager>();
