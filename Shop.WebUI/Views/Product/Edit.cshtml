@@ -1,0 +1,41 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container mt-5">
+    <h3 class="mb-3">Edit Product</h3>
+    <form asp-action="Edit" asp-controller="Product" method="post">
+
+
+        <!--
+        Create işleminde bunu yapmadık primary key olduğu için otomatik kendisi alıyor.
+        Ancak update işleminde hangi ürünü update ettiğimizi belirtiyoruz.
+        Bu bilgiyi kullanıcının bilmesine gerek yok o yüzden type=hidden
+    -->
+        <input type="hidden" asp-for="ProductId" />
+        <div class="mb-3">
+            <label asp-for="ProductName" class="form-label">Product Name</label>
+            <input asp-for="ProductName" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label">Price</label>
+            <input asp-for="Price" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Description</label>
+            <input asp-for="Description" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Category" class="mb-3"></label>
+            <select class="form-control" asp-for="CategoryId" asp-items="ViewBag.Categories" required>
+                <option disabled selected value="">Select Category</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-dark mt-5 mb-5">Update</button>
+    </form>
+</div>

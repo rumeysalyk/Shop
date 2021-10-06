@@ -79,25 +79,28 @@ namespace Shop.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpGet]
-        //public IActionResult Edit(int id)
-        //{
-        //    return View(unitOfWork.Products.Get(id));
-        //}
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            ViewBag.Categories = new SelectList(unitOfWork.Categories.GetAll(), "CategoryId", "CategoryName");
 
-        //[HttpPost]
-        //public IActionResult Edit(Product product)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        unitOfWork.Products.Edit(product);
-        //        unitOfWork.SaveChanges();
+            return View(unitOfWork.Products.Get((int)id));
+        }
 
-        //        TempData["message"] = $"{ product.ProductName} is updated.";
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(product);
-        //}
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                unitOfWork.Products.Edit(product);
+                unitOfWork.SaveChanges();
+
+                TempData["message"] = $"{ product.ProductName} is updated.";
+                return RedirectToAction("Index");
+            }
+            ViewBag.Categories = new SelectList(unitOfWork.Categories.GetAll(), "CategoryId", "CategoryName");
+            return View(product);
+        }
 
     }
 }
