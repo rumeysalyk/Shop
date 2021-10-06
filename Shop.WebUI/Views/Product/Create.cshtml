@@ -10,6 +10,7 @@
         <div class="mb-3">
             <label asp-for="@Model.ProductName" class="form-label">Product Name</label>
             <input asp-for="@Model.ProductName" class="form-control">
+            <span asp-validation-for="@Model.ProductName"></span>
         </div>
         <div class="mb-3">
             <label asp-for="@Model.Price" class="form-label">Price</label>

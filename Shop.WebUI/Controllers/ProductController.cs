@@ -34,9 +34,6 @@ namespace Shop.WebUI.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            /* render add new product form to the screen */
-
-            /* also render all categories to the screen for the admin to choose */
             
             ViewBag.AllCategories = new SelectList(unitOfWork.Categories.GetAll(), "CategoryId", "CategoryName");
 
@@ -59,10 +56,11 @@ namespace Shop.WebUI.Controllers
             }
             else
             {
-                Product product = mapper.Map<Product>(model);
-                return View(product);
+                ViewBag.AllCategories = new SelectList(unitOfWork.Categories.GetAll(), "CategoryId", "CategoryName");
 
+                return View(model);
             }
+            
 
         }
 
