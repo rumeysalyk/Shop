@@ -20,6 +20,7 @@ namespace Shop.Business.Concrete
 
         private IProductService _products;
         private ICategoryService _categories;
+        private IImageService _images;
 
         public IProductService Products
         {
@@ -37,6 +38,13 @@ namespace Shop.Business.Concrete
             }
         }
 
+        public IImageService Images
+        {
+            get
+            {
+                return _images ?? (_images = new EfImageManager(onlineShopDbContext));
+            }
+        }
 
         public void Dispose()
         {

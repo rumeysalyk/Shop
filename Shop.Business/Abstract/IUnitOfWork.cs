@@ -10,6 +10,7 @@ namespace Shop.Business.Abstract
     {
         IProductService Products { get; }
         ICategoryService Categories { get; }
+        IImageService Images { get; }
 
         int SaveChanges();
     }

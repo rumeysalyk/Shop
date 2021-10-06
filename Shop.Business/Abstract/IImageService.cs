@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Shop.Business.Abstract
 {
-    public interface ICategoryService : IGenericService<Category>
+    public interface IImageService : IGenericService<Image>
     {
-        List<Category> GetTop5Category();
-
+        List<Image> GetImagesByProduct(int id);
+        Image GetImageById(int id);
     }
 }

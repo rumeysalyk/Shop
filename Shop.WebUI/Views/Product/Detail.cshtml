@@ -1,5 +1,5 @@
 ﻿
-@model Product
+@model ProductImagesModel
 @{
     ViewData["Title"] = "Detail";
 }
@@ -12,24 +12,21 @@
 
                 <img src="~/images/kafkaokur.jpg" width="100%" id="productImg" alt="" data-bs-toggle="modal" data-bs-target="#largeModal">
                 <div class="small-img-row">
-                    <div class="small-img-col">
-                        <img src="~/images/kafkaokur.jpg" width="100%" class="small-img" alt="">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="~/images/kafkaokur.jpg" width="100%" class="small-img" alt="">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="~/images/kafkaokur.jpg" width="100%" class="small-img" alt="">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="~/images/kafkaokur.jpg" width="100%" class="small-img" alt="">
-                    </div>
+
+                    @foreach (var item in Model.Images)
+                    {
+                        <div class="small-img-col">
+                            <img src="~/images/@item.ImageURL" width="100%" class="small-img" alt="">
+                        </div>
+                    }
+
+
                 </div>
             </div>
             <div class="col-2">
 
-                <h1>@Model.ProductName</h1>
-                <h4>$@Model.Price</h4>
+                <h1>@Model.Product.ProductName</h1>
+                <h4>$@Model.Product.Price</h4>
                 <input type="number" value="1">
                 <a asp-action="AddToCart" asp-controller="Product" class="cart-btn"><i class="fas fa-shopping-cart"></i>Add to Cart</a>
                 <br>
