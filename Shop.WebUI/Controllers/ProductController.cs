@@ -64,20 +64,20 @@ namespace Shop.WebUI.Controllers
 
         }
 
-        //[HttpGet]
-        //public IActionResult Delete(int id)
-        //{
-        //    return View(unitOfWork.Products.Get(id));
-        //}
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            return View(unitOfWork.Products.Get(id));
+        }
 
-        //[HttpPost, ActionName("Delete")]
-        //public IActionResult Deleted(Product product)
-        //{
-        //    unitOfWork.Products.Delete(product);
-        //    unitOfWork.SaveChanges();
-        //    TempData["message"] = "Deleted";
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost, ActionName("Delete")]
+        public IActionResult Deleted(Product product)
+        {
+            unitOfWork.Products.Delete(product);
+            unitOfWork.SaveChanges();
+            TempData["message"] = "Deleted";
+            return RedirectToAction("Index");
+        }
 
         //[HttpGet]
         //public IActionResult Edit(int id)
